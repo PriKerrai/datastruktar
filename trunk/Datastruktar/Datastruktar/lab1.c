@@ -1,14 +1,19 @@
 #include <stdio.h>
+#include "simpio.h"
  
 void PrintGrayCode(int nBits);
 
 main()
 {
-     printf("Hello Karl!\n");
-	 printf("...and a good day to you Sir!");
-	 printf("What is brown and stick?, will its a stick");
+	getNumberOfBits();
+
 }
 
-void PrintGrayCode(int nBits) {
+int getNumberOfBits(void) {
+
+	 int nBits;
+     printf("How many bits ey!?");
+	 nBits = GetInteger();
+	 return nBits;
 
 }
