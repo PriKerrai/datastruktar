@@ -30,7 +30,7 @@ void printGrayCode(int nBits){
 	graycode = NewArray(8, char*);
 
 	// Put some stuff into graycode.
-	recursion(1, graycode);
+	recursion(1, graycode);	// 1 bit, recursion too scary.
 
 	// Printing elements in graycode.
 	for(i = 0; i < 2; i++){
@@ -43,8 +43,8 @@ void printGrayCode(int nBits){
 string* recursion(int nBits, char** graycode){
 		
 	if(nBits == 1){ 
-		graycode[0] = "hejsan";
-		graycode[1] = "00101101";
+		graycode[0] = "0";
+		graycode[1] = "1";
 		return graycode;
 	}
 	else{
