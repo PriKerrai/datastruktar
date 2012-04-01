@@ -36,7 +36,7 @@ void printGrayCode(int nBits){
 	recursion(nBits, graycode);	// 1 bit, recursion too scary.
 
 	// Printing elements in graycode.
-	for (i = 0; i < pow(2, nBits); i++){
+	for (i = 0; i < pow((double)2, nBits); i++){
 		printf("%i %s\n", i, graycode[i]);
 	}
 
@@ -56,7 +56,7 @@ void recursion(int nBits, char** graycode){
 
 		recursion(nBits-1, graycode);
 		
-		powerOfnBits = pow(2, nBits);
+		powerOfnBits = pow((double)2, nBits);	// totalt antal element i yttersta vektorn.
 
 		for (i = (powerOfnBits/2); i < powerOfnBits; i++){	// for second half
 			graycode[i] = reverseString(graycode[i]);
