@@ -18,7 +18,7 @@ int main(void){
 
 int getNumberOfBits(void){
 
-	printf("How many bits ey!? ");
+	printf("n = ");
 	return GetInteger();
 }
 
@@ -26,12 +26,13 @@ void printGrayCode(int nBits){
 
 	int i;
 	int* graycode;
+
 	graycode = NewArray(8, int);
 
-	// LÄGGER IN LITE VÄRDEN FÖR Å TESTA ARRAY
-	graycode[3] = 9;
-	graycode[2] = 8;
+	// Put some good stuff into graycode array.
+	recursion(1, graycode);
 
+	// Printing.
 	for(i = 0; i < 8; i++){
 		printf("%d %d\n", i, graycode[i]);
 	}
