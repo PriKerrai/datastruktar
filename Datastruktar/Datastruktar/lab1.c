@@ -4,7 +4,7 @@
  
 void printGrayCode(int nBits);
 int getNumberOfBits(void);
-int* recursion(int nBits, int* graycode);
+string* recursion(int nBits, string* graycode);
 
 int main(void){
 
@@ -25,24 +25,26 @@ int getNumberOfBits(void){
 void printGrayCode(int nBits){
 
 	int i;
-	int* graycode;
+	char** graycode;
 
-	graycode = NewArray(8, int);
+	graycode = NewArray(8, char*);
 
-	// Put some good stuff into graycode array.
+	// Put some stuff into graycode.
 	recursion(1, graycode);
 
-	// Printing.
-	for(i = 0; i < 8; i++){
-		printf("%d %d\n", i, graycode[i]);
+	// Printing elements in graycode.
+	for(i = 0; i < 2; i++){
+		printf("%i %s\n", i, graycode[i]);
 	}
+
+	FreeBlock(graycode);
 }
 
-int* recursion(int nBits, int* graycode){
+string* recursion(int nBits, char** graycode){
 		
 	if(nBits == 1){ 
-		graycode[0] = 0;
-		graycode[1] = 1;
+		graycode[0] = "hejsan";
+		graycode[1] = "00101101";
 		return graycode;
 	}
 	else{
