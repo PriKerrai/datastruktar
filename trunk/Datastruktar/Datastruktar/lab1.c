@@ -31,7 +31,7 @@ void printGrayCode(int nBits){
 	int i;
 	char** graycode;
 
-	graycode = NewArray(8, char*);
+	graycode = NewArray(pow((double)2, nBits), char*);
 
 	// Put some stuff into graycode.
 	recursion(nBits, graycode);	// 1 bit, recursion too scary.
@@ -46,7 +46,7 @@ void printGrayCode(int nBits){
 
 void recursion(int nBits, char** graycode){
 		
-	int i, powerOfnBits, secondHalf;
+	int i, powerOfnBits, firstHalf;
 
 	if (nBits == 1){ 
 
@@ -55,25 +55,25 @@ void recursion(int nBits, char** graycode){
 	}
 	else {
 
-		// Build the array for nBits - 1:
+		// Build the array for nBits - 1.
 		recursion(nBits-1, graycode);
 		
 		// Some variables
 		powerOfnBits = pow((double)2, nBits);	// totalt antal element i vektorn för nBits.
-		secondHalf = powerOfnBits;
+		firstHalf = (powerOfnBits/2)-1;
 
-		// Concat a reversed copy of graycode to graycode:
-		for (i = (powerOfnBits/2); i < powerOfnBits; i++){	// for second half - (3-4) 2bit
-			graycode[i] = graycode[secondHalf];
-			secondHalf--;
+		// Concat a reversed copy of graycode to graycode.
+		for (i = (powerOfnBits/2); i < powerOfnBits; i++){	// for second half - (2-3) 2bit
+			graycode[i] = graycode[firstHalf];
+			firstHalf--;
 		}
 
-		// Concat "0" to first half of graycode:
-		for (i = 0; i < (powerOfnBits/2); i++){				// for first half - (1-2) 2bit
+		// Concat "0" to first half of graycode.
+		for (i = 0; i < (powerOfnBits/2); i++){				// for first half - (0-1) 2bit
 			graycode[i] = Concat("0", graycode[i]);
 		}
-		// Concat "1" to second half of graycode:
-		for (i = (powerOfnBits/2); i < powerOfnBits; i++){	// for second half - (3-4) 2bit
+		// Concat "1" to second half of graycode.
+		for (i = (powerOfnBits/2); i < powerOfnBits; i++){	// for second half - (2-3) 2bit
 			graycode[i] = Concat("1", graycode[i]);
 		}
 	}
