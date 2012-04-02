@@ -4,14 +4,14 @@
 #include "strlib.h"
  
 void printGrayCode(int nBits);
-int getnBits(void);
-void recursion(int nBits, string* graycode);
+int getN(void);
+void buildGraycCode(int nBits, string* graycode);
 
 // ---- start of main ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- //
 int main(void){
 
 	while (1) {
-		printGrayCode(getnBits());
+		printGrayCode(getN());
 		printf("\n");
 	}
 
@@ -22,7 +22,7 @@ int main(void){
 }
 // ----  end of main  ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- //
 
-int getnBits(void){
+int getN(void){
 
 	printf("n = ");
 	return GetInteger();
@@ -39,7 +39,7 @@ void printGrayCode(int nBits){
 	graycode = NewArray(pow((double)2, nBits), char*);
 
 	// Put some stuff into graycode.
-	recursion(nBits, graycode);
+	buildGraycCode(nBits, graycode);
 
 	// Print graycode.
 	for (i = 0; i < pow((double)2, nBits); i++){
@@ -49,7 +49,7 @@ void printGrayCode(int nBits){
 	FreeBlock(graycode);
 }
 
-void recursion(int nBits, char** graycode){
+void buildGraycCode(int nBits, char** graycode){
 		
 	int i, powerOfnBits, firstHalf;
 
@@ -61,9 +61,9 @@ void recursion(int nBits, char** graycode){
 	else {
 
 		// Build the array for nBits - 1.
-		recursion(nBits-1, graycode);
+		buildGraycCode(nBits-1, graycode);
 		
-		// Some variables
+		// Some variables - to increase performance/readability of the for loops.
 		powerOfnBits = pow((double)2, nBits);	// totalt antal element i vektorn för nBits.
 		firstHalf = (powerOfnBits/2)-1;
 
