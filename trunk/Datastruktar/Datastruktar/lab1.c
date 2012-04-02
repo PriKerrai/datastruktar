@@ -7,6 +7,7 @@ void printGrayCode(int nBits);
 int getNumberOfBits(void);
 void recursion(int nBits, string* graycode);
 char* reverseString(char* str);
+char** reverseStringArray(char** strA);
 
 int main(void){
 	printf("%s\n", reverseString("karl"));
@@ -45,35 +46,55 @@ void printGrayCode(int nBits){
 
 void recursion(int nBits, char** graycode){
 		
-	int i, powerOfnBits;
+	int i, powerOfnBits, secondHalf;
 
 	if (nBits == 1){ 
 
 		graycode[0] = "0";
 		graycode[1] = "1";
 	}
-	else {	//...gör rekursivt anrop typ, etc... tja!
+	else {
 
+		// Build the array for nBits - 1:
 		recursion(nBits-1, graycode);
 		
-		powerOfnBits = pow((double)2, nBits);	// totalt antal element i yttersta vektorn.
+		// Some variables
+		powerOfnBits = pow((double)2, nBits);	// totalt antal element i vektorn för nBits.
+		secondHalf = powerOfnBits;
 
-		for (i = (powerOfnBits/2); i < powerOfnBits; i++){	// for second half
-			graycode[i] = reverseString(graycode[i]);
+		// Concat a reversed copy of graycode to graycode:
+		for (i = (powerOfnBits/2); i < powerOfnBits; i++){	// for second half - (3-4) 2bit
+			graycode[i] = graycode[secondHalf];
+			secondHalf--;
 		}
 
-		for (i = 0; i < (powerOfnBits/2); i++){				// for first half
+		// Concat "0" to first half of graycode:
+		for (i = 0; i < (powerOfnBits/2); i++){				// for first half - (1-2) 2bit
 			graycode[i] = Concat("0", graycode[i]);
 		}
-		for (i = (powerOfnBits/2); i < powerOfnBits; i++){	// for second half
+		// Concat "1" to second half of graycode:
+		for (i = (powerOfnBits/2); i < powerOfnBits; i++){	// for second half - (3-4) 2bit
 			graycode[i] = Concat("1", graycode[i]);
 		}
 	}
 }
 
+//works.
 char* reverseString(char* str){
 	if (str[0] == '\0') return "";
 	else {
 		return Concat(reverseString(str + 1), CharToString(str[0]));
 	}
+}
+
+//not finished.
+char** reverseStringArray(char** strA, int len){
+	
+	int i;
+
+	for (i = 0; i < len; i++){
+
+	}
+
+	return strA;
 }
