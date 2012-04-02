@@ -4,25 +4,26 @@
 #include "strlib.h"
  
 void printGrayCode(int nBits);
-int getNumberOfBits(void);
+int getnBits(void);
 void recursion(int nBits, string* graycode);
-char* reverseString(char* str);
-char** reverseStringArray(char** strA);
 
+// ---- start of main ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- //
 int main(void){
-	printf("%s\n", reverseString("karl"));
-	//CURRENTLY HARDCODED FOR MAX 3BIT, 8 element sized array, holding the graycode........
-	printGrayCode(getNumberOfBits());
+
+	while (1) {
+		printGrayCode(getnBits());
+	}
 
 	// Wait.
 	printf("\nWaiting...");
 	GetLine();
 	return 0;
 }
+// ----  end of main  ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- //
 
-int getNumberOfBits(void){
+int getnBits(void){
 
-	printf("n = ");
+	printf("\nn = ");
 	return GetInteger();
 }
 
@@ -34,9 +35,9 @@ void printGrayCode(int nBits){
 	graycode = NewArray(pow((double)2, nBits), char*);
 
 	// Put some stuff into graycode.
-	recursion(nBits, graycode);	// 1 bit, recursion too scary.
+	recursion(nBits, graycode);
 
-	// Printing elements in graycode.
+	// Print elements of graycode.
 	for (i = 0; i < pow((double)2, nBits); i++){
 		printf("%i %s\n", i, graycode[i]);
 	}
@@ -62,7 +63,7 @@ void recursion(int nBits, char** graycode){
 		powerOfnBits = pow((double)2, nBits);	// totalt antal element i vektorn för nBits.
 		firstHalf = (powerOfnBits/2)-1;
 
-		// Concat a reversed copy of graycode to graycode.
+		// Increase number of elements by adding a reversed copy of graycode to graycode.
 		for (i = (powerOfnBits/2); i < powerOfnBits; i++){	// for second half - (2-3) 2bit
 			graycode[i] = graycode[firstHalf];
 			firstHalf--;
@@ -77,24 +78,4 @@ void recursion(int nBits, char** graycode){
 			graycode[i] = Concat("1", graycode[i]);
 		}
 	}
-}
-
-//works.
-char* reverseString(char* str){
-	if (str[0] == '\0') return "";
-	else {
-		return Concat(reverseString(str + 1), CharToString(str[0]));
-	}
-}
-
-//not finished.
-char** reverseStringArray(char** strA, int len){
-	
-	int i;
-
-	for (i = 0; i < len; i++){
-
-	}
-
-	return strA;
 }
