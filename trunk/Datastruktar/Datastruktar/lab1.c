@@ -37,7 +37,7 @@ void printGrayCode(int nBits){
 	// Put some stuff into graycode.
 	recursion(nBits, graycode);
 
-	// Print elements of graycode.
+	// Print graycode.
 	for (i = 0; i < pow((double)2, nBits); i++){
 		printf("%i %s\n", i, graycode[i]);
 	}
