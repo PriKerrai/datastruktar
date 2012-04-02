@@ -12,6 +12,7 @@ int main(void){
 
 	while (1) {
 		printGrayCode(getnBits());
+		printf("\n");
 	}
 
 	// Wait.
@@ -23,7 +24,7 @@ int main(void){
 
 int getnBits(void){
 
-	printf("\nn = ");
+	printf("n = ");
 	return GetInteger();
 }
 
