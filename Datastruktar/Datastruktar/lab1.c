@@ -6,6 +6,7 @@
 void printGrayCode(int nBits);
 int getN(void);
 void buildGraycCode(int nBits, string* graycode);
+bool isMeasurable(int target, int weights[], int nWeights);
 
 // ---- start of main ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- //
 int main(void){
@@ -21,6 +22,14 @@ int main(void){
 	return 0;
 }
 // ----  end of main  ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- //
+
+bool isMeasurable(int target, int weights[], int nWeights){
+
+	if(1) return 1;
+	else{
+		return 0;
+	}
+}
 
 int getN(void){
 
