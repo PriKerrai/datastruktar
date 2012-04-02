@@ -32,6 +32,9 @@ void printGrayCode(int nBits){
 	int i;
 	char** graycode;
 
+	// Input check.
+	if (nBits < 1) return;
+
 	graycode = NewArray(pow((double)2, nBits), char*);
 
 	// Put some stuff into graycode.
