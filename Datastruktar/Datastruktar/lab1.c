@@ -23,6 +23,7 @@ int main(void){
 }
 // ----  end of main  ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- //
 
+// Använd modulus? Pröva största möjliga vikt först?
 bool isMeasurable(int target, int weights[], int nWeights){
 
 	if(1) return 1;
