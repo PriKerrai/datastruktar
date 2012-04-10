@@ -16,33 +16,46 @@ int main(void){
 
 	// Rita stammen.
 	MovePen(3, 0.2);
+	DrawLine(0, 1);
 	// Börja rita förgreningar...	första argumentet är djupet.
-	//drawV(9, 30, 0.5);
+	drawV(9, 90, 1);
 	
 	return 0;
 }
 
 // 0.2
 void drawV(int depth, double angle, double len){
+
+	double sX, sY;
+
 	if (depth <= 0){
 		// Basfall.
+		printf("Basfall has been reached. Going back\n");
 	}
 	else {
 
-		// Rita linje med mindre vinkel
-		drawPolarLine(len-0.2, angle-30);
-		// Rekursivt anrop med lägre djup och mindre längd - på VÄNSTER gren
-		//...
+		// Reduce length of line.
+		len *= 0.75;
 
+		// Save initial x and y position.
+		sX = GetCurrentX();
+		sY = GetCurrentY();
+
+		// Rita linje med mindre vinkel
+		drawPolarLine(len, angle-30);
+		// Rekursivt anrop med lägre djup och mindre längd - på VÄNSTER gren
+		drawV(depth-1, angle-30, len);
+
+		
 		// Rita linje med större vinkel
-		drawPolarLine(len-0.2, angle+30);
-		// 
-		//...
+		MovePen(sX, sY);
+		drawPolarLine(len, angle+30);
 		// Rekursivt anrop med lägre djup och mindre längd - på HÖGER gren
-		//...
+		drawV(depth-1, angle+30, len);
 	}
 }
 
+// Borrowed from Eric S. Roberts - Programming Abstractions in C.
 void drawPolarLine(double r, double theta){
 
 	double radians;
