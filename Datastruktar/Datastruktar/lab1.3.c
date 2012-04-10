@@ -3,6 +3,7 @@
 #include "genlib.h"
 #include "graphics.h"
 #include "simpio.h"
+#include "random.h"
 
 #define Pi 3.1415926535
 
@@ -18,44 +19,46 @@ int main(void){
 	MovePen(3, 0.2);
 	DrawLine(0, 1);
 	// Börja rita förgreningar...	första argumentet är djupet.
-	drawV(9, 90, 1);
+	drawV(10, 90, 1);
 	
 	return 0;
 }
 
-// 0.2
+// Kanske måste ha basfall på längden? Lätt ordnat, men tycker det blir lite tråkigare.
+//"If the probability of branching is a function of the length of the current branch, the process will eventually terminate as the branches get progressively shorter."
 void drawV(int depth, double angle, double len){
 
-	double sX, sY;
+	double sX, sY, angleV;
 
-	if (depth <= 0){
-		// Basfall.
-		printf("Basfall has been reached. Going back\n");
-	}
-	else {
+	//Randomize();
+
+	if ((depth > 0) && (RandomChance(.82))){
 
 		// Reduce length of line.
-		len *= 0.75;
+		len *= 0.77;
+		// Specify angle increment/decrement of new branches.
+		angleV = 25;
 
 		// Save initial x and y position.
 		sX = GetCurrentX();
 		sY = GetCurrentY();
 
-		// Rita linje med mindre vinkel
-		drawPolarLine(len, angle-30);
-		// Rekursivt anrop med lägre djup och mindre längd - på VÄNSTER gren
-		drawV(depth-1, angle-30, len);
+		// Rita linje med mindre vinkel.
+		drawPolarLine(len, angle-angleV);
+		// Rekursivt anrop med lägre djup och mindre längd - på VÄNSTER gren.
+		drawV(depth-1, angle-angleV, len);
 
 		
-		// Rita linje med större vinkel
+		// Rita linje med större vinkel.
 		MovePen(sX, sY);
-		drawPolarLine(len, angle+30);
-		// Rekursivt anrop med lägre djup och mindre längd - på HÖGER gren
-		drawV(depth-1, angle+30, len);
+		drawPolarLine(len, angle+angleV);
+		// Rekursivt anrop med lägre djup och mindre längd - på HÖGER gren.
+		drawV(depth-1, angle+angleV, len);
 	}
 }
 
-// Borrowed from Eric S. Roberts - Programming Abstractions in C.
+// Borrowed from the book Programming Abstractions in C - Eric S. Roberts.
+// What it does: Draws a line to a given length on a given angle from the current position.
 void drawPolarLine(double r, double theta){
 
 	double radians;
@@ -63,27 +66,3 @@ void drawPolarLine(double r, double theta){
 	radians = theta / 180 * Pi;
 	DrawLine(r * cos(radians), r * sin(radians));
 }
-
-// 0.1
-/*void drawV(int depth, double xP, double yP){
-	printf("\nEnter drawV(%i, %f, %f)", depth, xP, yP);
-	if (depth <= 0){
-		// THEN YOU GET NOTHING
-		// Depth has been reached. Going back...
-	}
-	else {
-		
-		//GetLine();
-		//printf("\nPress enter to continue drawing...");
-
-		printf("\nDrawing... (%i, %f, %f) ...", depth, xP, yP);
-		//GetLine();
-		DrawLine(xP, yP);
-		MovePen(GetCurrentX()-xP, GetCurrentY()-yP);
-		DrawLine(-xP, yP);
-		//xP = xP - (xP/2);
-		//yP = yP + (yP/2);
-		drawV(depth-1, (xP*0.65), (yP*0.65));
-	}
-}*/
-
