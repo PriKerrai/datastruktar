@@ -15,7 +15,7 @@ int main(void){
 	MovePen(3, 0.2);
 	DrawLine(0, initLength);
 	// Börja rita förgreningar...	första argumentet är djupet.
-	drawV(9, 0.1, 0.1);
+	drawV(9, 0.5, 0.5);
 
 	return 0;
 }
@@ -27,7 +27,7 @@ void drawV(int depth, double xP, double yP){
 		// Depth has been reached.
 	}
 	else {
-		drawV(depth-1, (xP+0.05), (yP+0.05));
+		
 
 		//GetLine();
 		//printf("\nPress enter to continue drawing...");
@@ -37,6 +37,7 @@ void drawV(int depth, double xP, double yP){
 		DrawLine(xP, yP);
 		MovePen(GetCurrentX()-xP, GetCurrentY()-yP);
 		DrawLine(-xP, yP);
-		//MovePen(GetCurrentX()-xP, GetCurrentY()-yP);
+
+		drawV(depth-1, (xP-0.05), (yP-0.05));
 	}
 }
