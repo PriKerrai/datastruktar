@@ -11,7 +11,7 @@ bool isMeasurable(int target, int weights[], int nWeights);
 // ---- start of main ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- //
 int main(void){
 
-	while (1) {
+	while (TRUE){
 		printGrayCode(getN());
 		printf("\n");
 	}
@@ -22,15 +22,6 @@ int main(void){
 	return 0;
 }
 // ----  end of main  ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- //
-
-// Använd modulus? Pröva största möjliga vikt först?
-bool isMeasurable(int target, int weights[], int nWeights){
-
-	if(1) return 1;	// basfall...
-	else{
-		return 0;		// rekursivt anrop med mindre target/nWeights?
-	}
-}
 
 int getN(void){
 
