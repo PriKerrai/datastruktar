@@ -21,17 +21,19 @@ int main(void){
 }
 
 void drawV(int depth, double xP, double yP){
+	printf("\nEnter drawV(%i, %f, %f)", depth, xP, yP);
 	if (depth <= 0){
 		// THEN YOU GET NOTHING
 		// Depth has been reached.
 	}
 	else {
-		printf("\nEnter drawV(%i, %f, %f)", depth, xP, yP);
 		drawV(depth-1, (xP+0.05), (yP+0.05));
 
 		//GetLine();
 		//printf("\nPress enter to continue drawing...");
 
+		printf("\nDrawing... (%i, %f, %f) ...", depth, xP, yP);
+		GetLine();
 		DrawLine(xP, yP);
 		MovePen(GetCurrentX()-xP, GetCurrentY()-yP);
 		DrawLine(-xP, yP);
