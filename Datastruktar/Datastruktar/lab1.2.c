@@ -24,9 +24,12 @@ int main(void){
 // Använd modulus? Pröva största möjliga vikt först?
 bool isMeasurable(int target, int weights[], int nWeights){
 
-	if(1) return 1;	// basfall...
+	// basfall...
+	if(nWeights == 0) return false;
+	if(target - weights[0]) return true;		
+	// rekursivt anrop med mindre target/nWeights?
 	else{
-		return 0;		// rekursivt anrop med mindre target/nWeights?
+														
 	}
 }
 
