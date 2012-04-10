@@ -6,8 +6,7 @@
 
 #define Pi 3.1415926535
 
-void drawV(int depth, double xP, double yP);
-void drawVI(int depth, double angle, double len);
+void drawV(int depth, double angle, double len);
 void drawPolarLine(double r, double theta);
 
 int main(void){
@@ -17,23 +16,30 @@ int main(void){
 
 	// Rita stammen.
 	MovePen(3, 0.2);
-	DrawLine(0, initLength);
 	// Börja rita förgreningar...	första argumentet är djupet.
-	drawV(9, 0.5, 1);
+	//drawV(9, 30, 0.5);
 	
 	return 0;
 }
 
 // 0.2
 void drawV(int depth, double angle, double len){
-	if (depth == 0){
+	if (depth <= 0){
 		// Basfall.
 	}
 	else {
+
 		// Rita linje med mindre vinkel
-		// Rita linje med större vinkel
+		drawPolarLine(len-0.2, angle-30);
 		// Rekursivt anrop med lägre djup och mindre längd - på VÄNSTER gren
+		//...
+
+		// Rita linje med större vinkel
+		drawPolarLine(len-0.2, angle+30);
+		// 
+		//...
 		// Rekursivt anrop med lägre djup och mindre längd - på HÖGER gren
+		//...
 	}
 }
 
