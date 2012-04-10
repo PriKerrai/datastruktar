@@ -2,18 +2,9 @@
 #include "simpio.h"
 #include "math.h"
 #include "strlib.h"
- 
-void printGrayCode(int nBits);
-int getN(void);
-void buildGraycCode(int nBits, string* graycode);
 
 // ---- start of main ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- //
 int main(void){
-
-	while (1) {
-		printGrayCode(getN());
-		printf("\n");
-	}
 
 	// Wait.
 	printf("\nWaiting...");
@@ -24,9 +15,9 @@ int main(void){
 // Använd modulus? Pröva största möjliga vikt först?
 bool isMeasurable(int target, int weights[], int nWeights){
 
-	// basfall...
-	if(nWeights == 0) return false;
-	if(target - weights[0]) return true;		
+	// basfall... 
+	if(nWeights == 0) return FALSE;
+	if(target - weights[0]) return TRUE;		
 	// rekursivt anrop med mindre target/nWeights?
 	else{
 														
