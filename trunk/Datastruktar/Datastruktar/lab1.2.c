@@ -29,3 +29,6 @@ bool isMeasurable(int target, int weights[], int nWeights){
 		return 0;		// rekursivt anrop med mindre target/nWeights?
 	}
 }
+
+
+static int sampleWeights[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
