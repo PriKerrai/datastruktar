@@ -16,8 +16,8 @@ int main(void){
 	InitGraphics();
 
 	// Draw "trunk".
-	MovePen(3, 0.2);
-	DrawLine(0, 1);
+	MovePen(3.5, 0.2);
+	DrawLine(0, 0.8);
 
 	// Draw tree.
 	drawV(10, 90, 1);
@@ -32,7 +32,7 @@ void drawV(int depth, double angle, double len){
 	double sX, sY, angleV;
 
 	//Randomize();
-
+	
 	if ((depth > 0) && (RandomChance(.82))){
 
 		// Reduce length of line.
