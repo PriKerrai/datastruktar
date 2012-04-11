@@ -25,7 +25,7 @@ int main(void){
 	return 0;
 }
 
-// Kanske måste ha basfall på längden? Lätt ordnat, men tycker det blir lite tråkigare.
+// Kanske måste ha basfall på längden istället för djupet? Lätt ordnat, men tycker det blir lite tråkigare.
 //"If the probability of branching is a function of the length of the current branch, the process will eventually terminate as the branches get progressively shorter."
 void drawV(int depth, double angle, double len){
 
