@@ -39,7 +39,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\Karl\Documents\Visual Studio 2010\Projects\Datastruktar\Datastruktar\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\Karl\Documents\Visual Studio 2010\Projects\Datastruktar\Datastruktar\include;C:\Users\Josef\Documents\Visual Studio 2010\Projects\Datastruktar\Datastruktar\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -92,6 +92,8 @@
     <Library Include="..\lib\PCLibs2010.lib" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="lab1.2.c" />
+    <ClCompile Include="lab1.3.c" />
     <ClCompile Include="lab1.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
