@@ -9,27 +9,29 @@ int main(void){
 	static int nWeights = 0;
 	int i, totalWeight = 0;
 
+	printf("How many weights should be used?\n");
+	nWeights = GetInteger();
+
 	// Hämta vikter från användaren
-	printf("Please input up to 10 weights to measure:\n\n");
-	for (i = 0; i < 10; i++) {
+	printf("\nPlease input the weights:\n\n");
+	for (i = 0; i < nWeights; i++) {
 		printf("Weight %d: ", i+1);
 		while((weights[i] = GetInteger()) < 1) printf("Error: Weight must weigh at least 1\nRetry: ");
-		nWeights++;
 	}
 
 	// Beräkna totala vikten av alla vikter
 	for (i = 0; i < nWeights; i++)
 		totalWeight = totalWeight+weights[i];
-	printf("\nTotal weight is: %d", totalWeight);
+	printf("\nTotal weight is: %d\n\n", totalWeight);
 
 	// Testa varje möjlig vikt (från 1 upp till den totala vikten)
 	// och skriv ut om det givet de vikter vi har, gick att mäta
-	// eller ej.
+	// eller ej
 	for (i = 0; i < totalWeight; i++) {
-		if (isMeasurable(i, weights, nWeights))
-			printf("%d is measurable");
+		if (isMeasurable(i+1, weights, nWeights))
+			printf("%d is measurable\n", i+1);
 		else
-			printf("%d is not measurable");
+			printf("%d is not measurable\n", i+1);
 	}
 
 	GetLine();
@@ -37,17 +39,20 @@ int main(void){
 }
 // ----  end of main  ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- //
 
-// Använd modulus? Pröva största möjliga vikt först?
-bool isMeasurable(int target, int weights[], int nWeights){
+bool isMeasurable(int target, int weights[], int nWeights) {
 
-	// basfall... 
-	if(nWeights == 0)
-		return FALSE;
-	if(target - weights[0])
-		return TRUE;
-	// rekursivt anrop med mindre target/nWeights?
-	else{
-		
-	}
+	// 'target' minus vikten på weights[nWeights] gick jämnt ut,
+	// det gick alltså att mäta 'target'
+	if (target == 0)
+		return (TRUE);
+	// Slut på vikter att testa med
+	else if (nWeights < 0)
+		return (FALSE);
+	else if (isMeasurable(target-weights[nWeights-1], weights, nWeights-1))
+		return (TRUE);
+	else if (isMeasurable(target+weights[nWeights-1], weights, nWeights-1))
+		return (TRUE);
+	else if (isMeasurable(target, weights, nWeights-1))
+		return (TRUE);
 }
 
