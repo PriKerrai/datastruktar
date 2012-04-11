@@ -15,10 +15,11 @@ int main(void){
 	int initLength = 1;
 	InitGraphics();
 
-	// Rita stammen.
+	// Draw "trunk".
 	MovePen(3, 0.2);
 	DrawLine(0, 1);
-	// Börja rita förgreningar...	första argumentet är djupet.
+
+	// Draw tree.
 	drawV(10, 90, 1);
 	
 	return 0;
@@ -43,16 +44,16 @@ void drawV(int depth, double angle, double len){
 		sX = GetCurrentX();
 		sY = GetCurrentY();
 
-		// Rita linje med mindre vinkel.
+		// Draw line with reduced angle.
 		drawPolarLine(len, angle-angleV);
-		// Rekursivt anrop med lägre djup och mindre längd - på VÄNSTER gren.
+		// Recursive call continuing the LEFT branch.
 		drawV(depth-1, angle-angleV, len);
 
 		
-		// Rita linje med större vinkel.
+		// Draw line with increased angle.
 		MovePen(sX, sY);
 		drawPolarLine(len, angle+angleV);
-		// Rekursivt anrop med lägre djup och mindre längd - på HÖGER gren.
+		// Recursive call continuing the RIGHT branch.
 		drawV(depth-1, angle+angleV, len);
 	}
 }
