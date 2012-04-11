@@ -10,7 +10,7 @@ int main(void){
 	int i, totalWeight = 0;
 
 	printf("How many weights should be used?\n");
-	nWeights = GetInteger();
+	while((nWeights = GetInteger()) < 1 || nWeights > 10) printf("Error: Must use at least 1- up to 10 weights\nRetry: ");
 
 	// Hämta vikter från användaren
 	printf("\nPlease input the weights:\n\n");
