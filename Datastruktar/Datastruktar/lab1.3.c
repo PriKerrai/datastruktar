@@ -4,6 +4,7 @@
 #include "graphics.h"
 #include "simpio.h"
 #include "random.h"
+#include "windows.h"
 
 #define Pi 3.1415926535
 
@@ -44,11 +45,14 @@ void drawV(int depth, double angle, double len){
 		sX = GetCurrentX();
 		sY = GetCurrentY();
 
+		Sleep(100);
+
 		// Draw line with reduced angle.
 		drawPolarLine(len, angle-angleV);
 		// Recursive call continuing the LEFT branch.
 		drawV(depth-1, angle-angleV, len);
 
+		Sleep(100);
 		
 		// Draw line with increased angle.
 		MovePen(sX, sY);
