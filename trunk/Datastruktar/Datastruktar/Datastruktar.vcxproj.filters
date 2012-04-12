@@ -55,13 +55,16 @@
     </Library>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="lab1.c">
+    <ClCompile Include="Problem 4a.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="lab1.2.c">
+    <ClCompile Include="Problem 1.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="lab1.3.c">
+    <ClCompile Include="Problem 3.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Problem 2.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
