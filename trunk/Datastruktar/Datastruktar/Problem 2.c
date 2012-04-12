@@ -3,6 +3,8 @@
 #include "math.h"
 #include "strlib.h"
 
+bool isMeasurable(int target, int weights[], int nWeights);
+
 // ---- start of main ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- //
 int main(void){
 	static int weights[10];
