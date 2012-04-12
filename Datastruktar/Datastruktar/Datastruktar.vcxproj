@@ -92,13 +92,16 @@
     <Library Include="..\lib\PCLibs2010.lib" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="lab1.2.c" />
-    <ClCompile Include="lab1.3.c">
+    <ClCompile Include="Problem 2.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="lab1.c">
+    <ClCompile Include="Problem 3.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="Problem 1.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Problem 4a.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
