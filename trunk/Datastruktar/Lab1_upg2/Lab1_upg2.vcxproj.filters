@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Datastruktar\Problem 2.c">
+    <ClCompile Include="lab1_upg2.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
