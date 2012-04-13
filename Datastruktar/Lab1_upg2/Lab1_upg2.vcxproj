@@ -10,6 +10,9 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="lab1_upg2.c" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{CBB8C263-0629-4312-9A81-7946FAEEA72B}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
@@ -81,9 +84,6 @@
       <AdditionalLibraryDirectories>E:\Projekt\Visual Studio 2010\Projects\Datastruktar%282%29\Datastruktar\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\Datastruktar\Problem 2.c" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

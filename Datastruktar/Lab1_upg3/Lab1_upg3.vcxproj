@@ -10,6 +10,9 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="lab1_upg3.c" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{883A3DBD-8A4A-47AD-A70C-5B22836A3A9B}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
@@ -81,9 +84,6 @@
       <AdditionalDependencies>PCLibs2010.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\Datastruktar\Problem 3.c" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
