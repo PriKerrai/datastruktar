@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Datastruktar", "Datastruktar\Datastruktar.vcxproj", "{32604D2E-279C-48FD-B29B-313BE070EF44}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lab1_upg1", "Lab1_upg1\Lab1_upg1.vcxproj", "{AE92E7D2-1E21-4434-8F17-DA9C51C487E1}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lab1_upg2", "Lab1_upg2\Lab1_upg2.vcxproj", "{CBB8C263-0629-4312-9A81-7946FAEEA72B}"
@@ -21,10 +19,6 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{32604D2E-279C-48FD-B29B-313BE070EF44}.Debug|Win32.ActiveCfg = Debug|Win32
-		{32604D2E-279C-48FD-B29B-313BE070EF44}.Debug|Win32.Build.0 = Debug|Win32
-		{32604D2E-279C-48FD-B29B-313BE070EF44}.Release|Win32.ActiveCfg = Release|Win32
-		{32604D2E-279C-48FD-B29B-313BE070EF44}.Release|Win32.Build.0 = Release|Win32
 		{AE92E7D2-1E21-4434-8F17-DA9C51C487E1}.Debug|Win32.ActiveCfg = Debug|Win32
 		{AE92E7D2-1E21-4434-8F17-DA9C51C487E1}.Debug|Win32.Build.0 = Debug|Win32
 		{AE92E7D2-1E21-4434-8F17-DA9C51C487E1}.Release|Win32.ActiveCfg = Release|Win32
