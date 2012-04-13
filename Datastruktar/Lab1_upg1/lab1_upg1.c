@@ -11,10 +11,8 @@ bool isMeasurable(int target, int weights[], int nWeights);
 // ---- start of main ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- //
 int main(void){
 
-	while (TRUE){
-		printGrayCode(getN());
-		printf("\n");
-	}
+	printGrayCode(getN());
+	printf("\n");
 
 	// Wait.
 	printf("\nWaiting...");
