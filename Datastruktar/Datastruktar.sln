@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lab1_upg2", "Lab1_upg2\Lab1
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lab1_upg3", "Lab1_upg3\Lab1_upg3.vcxproj", "{883A3DBD-8A4A-47AD-A70C-5B22836A3A9B}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lab1_upg4a", "Lab1_upg4a\Lab1_upg4a.vcxproj", "{1139FA3D-BE2B-42AC-A804-31F822034030}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -35,6 +37,10 @@ Global
 		{883A3DBD-8A4A-47AD-A70C-5B22836A3A9B}.Debug|Win32.Build.0 = Debug|Win32
 		{883A3DBD-8A4A-47AD-A70C-5B22836A3A9B}.Release|Win32.ActiveCfg = Release|Win32
 		{883A3DBD-8A4A-47AD-A70C-5B22836A3A9B}.Release|Win32.Build.0 = Release|Win32
+		{1139FA3D-BE2B-42AC-A804-31F822034030}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1139FA3D-BE2B-42AC-A804-31F822034030}.Debug|Win32.Build.0 = Debug|Win32
+		{1139FA3D-BE2B-42AC-A804-31F822034030}.Release|Win32.ActiveCfg = Release|Win32
+		{1139FA3D-BE2B-42AC-A804-31F822034030}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
