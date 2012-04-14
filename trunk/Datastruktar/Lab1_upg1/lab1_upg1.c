@@ -12,10 +12,8 @@ bool isMeasurable(int target, int weights[], int nWeights);
 int main(void){
 
 	printGrayCode(getN());
-	printf("\n");
 
-	// Wait.
-	printf("\nWaiting...");
+	printf("\nPress enter to exit...");
 	GetLine();
 	return 0;
 }
@@ -62,22 +60,22 @@ void buildGraycCode(int nBits, char** graycode){
 		// Build the array for nBits - 1.
 		buildGraycCode(nBits-1, graycode);
 		
-		// Some variables - to increase performance/readability of the for loops.
-		powerOfnBits = pow((double)2, nBits);	// totalt antal element i vektorn för nBits.
+		// Some variables - to better performance/readability of the for loops.
+		powerOfnBits = pow((double)2, nBits);
 		firstHalf = (powerOfnBits/2)-1;
 
 		// Increase number of elements by adding a reversed copy of graycode to graycode.
-		for (i = (powerOfnBits/2); i < powerOfnBits; i++){	// for second half - (2-3) 2bit
+		for (i = (powerOfnBits/2); i < powerOfnBits; i++){
 			graycode[i] = graycode[firstHalf];
 			firstHalf--;
 		}
 
 		// Concat "0" to first half of graycode.
-		for (i = 0; i < (powerOfnBits/2); i++){				// for first half - (0-1) 2bit
+		for (i = 0; i < (powerOfnBits/2); i++){
 			graycode[i] = Concat("0", graycode[i]);
 		}
 		// Concat "1" to second half of graycode.
-		for (i = (powerOfnBits/2); i < powerOfnBits; i++){	// for second half - (2-3) 2bit
+		for (i = (powerOfnBits/2); i < powerOfnBits; i++){
 			graycode[i] = Concat("1", graycode[i]);
 		}
 	}
