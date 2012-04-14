@@ -8,7 +8,6 @@
 #include "genlib.h"
 #include "graphics.h"
 #include "mazelib.h"
-
 /*
  * Constants
  * ---------
@@ -18,48 +17,51 @@
 #define MazeFile "pathlen.maz"
 #define NoSolution 10000
 
+// 
+typedef struct {
+	int steps;
+	int pathLength;
+	bool ok;
+} splT;
+
 /* Private function prototypes */
 
-static bool SolveMaze(pointT pt);
+static splT SolveMaze(pointT pt, splT spl);
 static pointT AdjacentPoint(pointT pt, directionT dir);
 int shortestPathLength(pointT pt);
-int pathLength(pointT pt, int pathLength);
+
+
 
 /* Main program */
 
 main()
 {
+	int spLen;
+
+	SetPauseTime(0.01);
     InitGraphics();
-    ReadMazeMap(MazeFile);
-    if (SolveMaze(GetStartPosition())) {
-        printf("The marked squares show a solution path.\n");
-    } else {
-        printf("No solution exists.\n");
-    }
+	ReadMazeMap(MazeFile);
+
+	//printf("shortestPathLength = %i\n", shortestPathLength(GetStartPosition()));
+	spLen = shortestPathLength(GetStartPosition());
+	if (spLen < NoSolution) printf("The shortest path is: %d\n", spLen);
+	else printf("No solution was found.\n");
+
 }
 
-int pathLength(pointT pt, int pathLength){
+static int shortestPathLength(pointT pt){
 
-	directionT dir;
-	
-	if (OutsideMaze(pt)) return (TRUE);
-	if (IsMarked(pt)) return (FALSE);
-	MarkSquare(pt);
-	pathLength++;
-	for (dir = North; dir <= West; dir++) {
-		if (!WallExists(pt, dir)) {
-			if (SolveMaze(AdjacentPoint(pt, dir))) {
-				return (TRUE);
-			}
-		}
-	}
-	UnmarkSquare(pt);
-	pathLength--;
-	return (FALSE);
-}
+	splT spl;
+	spl.steps = 0;
+	spl.pathLength = 0;
+	spl.ok = FALSE;
 
-int shortestPathLength(pointT pt){
-	
+	spl = SolveMaze(pt, spl);
+
+	if (spl.pathLength > 0)
+		return spl.pathLength;
+	else
+		return NoSolution;
 }
 
 /*
@@ -73,22 +75,33 @@ int shortestPathLength(pointT pt){
  * current square and moving one step along each open passage.
  */
 
-static bool SolveMaze(pointT pt)
+static splT SolveMaze(pointT pt, splT spl)
 {
     directionT dir;
-
-    if (OutsideMaze(pt)) return (TRUE);
-    if (IsMarked(pt)) return (FALSE);
+	
+	if (OutsideMaze(pt)){
+		if (spl.steps < spl.pathLength || spl.pathLength == 0)
+			spl.pathLength = spl.steps;
+		spl.ok = FALSE;
+		return spl;
+	}
+	if (IsMarked(pt)) {
+		spl.ok = FALSE;
+		return spl;	
+	};
     MarkSquare(pt);
+	spl.steps++;
     for (dir = North; dir <= West; dir++) {
         if (!WallExists(pt, dir)) {
-            if (SolveMaze(AdjacentPoint(pt, dir))) {
-                return (TRUE);
+			if ((spl = SolveMaze(AdjacentPoint(pt, dir), spl)).ok) {
+				return spl;
             }
         }
     }
     UnmarkSquare(pt);
-    return (FALSE);
+	spl.steps--;
+	spl.ok = FALSE;
+	return spl;
 }
 
 /*
