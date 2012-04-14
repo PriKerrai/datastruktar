@@ -37,10 +37,14 @@ int shortestPathLength(pointT pt);
 main()
 {
 	int spLen;
+	string fileName;
 
-	SetPauseTime(0.01);
+	fileName = GetLine();
+	SetPauseTime(0.001);
+
     InitGraphics();
-	ReadMazeMap(MazeFile);
+
+    ReadMazeMap(fileName);
 
 	//printf("shortestPathLength = %i\n", shortestPathLength(GetStartPosition()));
 	spLen = shortestPathLength(GetStartPosition());
