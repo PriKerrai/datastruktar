@@ -33,10 +33,10 @@ main()
 	
 	fileName = "unmark.maz";
 	//fileName = GetLine();
-	SetPauseTime(0);
 
     InitGraphics();
-
+	
+	SetPauseTime(0);
     ReadMazeMap(fileName);
 	solveMazeCalls = 0;
     if (SolveMaze(GetStartPosition())) {
@@ -46,6 +46,7 @@ main()
     }
 	printf("Number of recursive calls: %i\n", solveMazeCalls);
 
+	SetPauseTime(0.01);
 	ReadMazeMap(fileName);
 	solveMazeCalls = 0;
 	if (SolveMazeNoUnmark(GetStartPosition())) {
@@ -99,8 +100,7 @@ static bool SolveMazeNoUnmark(pointT pt)
     MarkSquare(pt);
     for (dir = North; dir <= West; dir++) {
         if (!WallExists(pt, dir)) {
-			
-            if (SolveMaze(AdjacentPoint(pt, dir))) {
+            if (SolveMazeNoUnmark(AdjacentPoint(pt, dir))) {
                 return (TRUE);
             }
         }
