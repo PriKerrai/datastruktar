@@ -16,23 +16,82 @@
  */
 
 #define MazeFile "example.maz"
+#define MaxPath 50
 
 /* Private function prototypes */
 
-static bool SolveMaze(pointT pt);
+static bool SolveMaze(pointT pt, pointT* path, int len);
 static pointT AdjacentPoint(pointT pt, directionT dir);
+int FindPath(pointT pt, pointT path[], int maxPathSize);
+int pathLen(pointT path[]);
+void reverseSort(pointT* path, int length);
 
 /* Main program */
-
+// --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 main()
 {
-    InitGraphics();
-    ReadMazeMap(MazeFile);
-    if (SolveMaze(GetStartPosition())) {
-        printf("The marked squares show a solution path.\n");
-    } else {
-        printf("No solution exists.\n");
-    }
+	pointT path[MaxPath];
+	int i, len;
+	string mazeFile;
+
+	mazeFile = "pathlen.maz";
+	//MazeFile = GetLine();
+
+
+	// Initialize the vector with -1 as the x-cordinate, to surely measure length of the saved path using function pathLen.
+	for (i = 0; i < MaxPath; i++){
+		path[i].x = -1;
+	}
+
+	SetPauseTime(0.1);
+	InitGraphics();
+	ReadMazeMap(MazeFile);
+
+	len = FindPath(GetStartPosition(), path, MaxPath);
+
+	if (len == 0) {
+		printf("No solution exists.\n");
+	} 
+	else {
+		//reverseSort(path, pathLen(path));
+		printf("The following path is a solution:\n");
+		for (i = 0; i < len; i++) {
+			printf(" (%d, %d)\n", path[i].x, path[i].y);
+		}
+	}
+	GetLine();
+}
+// --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+
+int pathLen(pointT path[]){
+
+	int len = 0;
+
+	while (path[len].x > -1){
+		len++;
+	}
+
+	return len;
+}
+
+void reverseSort(pointT path[], int length) {
+	int i;
+	pointT tmp;
+
+	for (i = 0; i < length; i++) {
+	  tmp = path[i];
+	  path[i] = path[length-(i+1)];
+	  path[length-(i+1)] = tmp;
+	  printf("length-(i+1)=%i\n", length-(i+1));
+	}
+}
+
+int FindPath(pointT pt, pointT path[], int maxPathSize){
+	
+	int len = 0;
+
+	SolveMaze(pt, path, len);
+	return pathLen(path);
 }
 
 /*
@@ -46,21 +105,39 @@ main()
  * current square and moving one step along each open passage.
  */
 
-static bool SolveMaze(pointT pt)
+static bool SolveMaze(pointT pt, pointT path[], int len)
 {
-    directionT dir;
+	directionT dir;
 
-    if (OutsideMaze(pt)) return (TRUE);
-    if (IsMarked(pt)) return (FALSE);
+	if (OutsideMaze(pt)){
+		path[len].x = pt.x;
+		path[len].y = pt.y;
+		len++;
+		return (TRUE);
+	}
+
+	if (IsMarked(pt)){
+		len--;
+		return (FALSE);
+	}
+
     MarkSquare(pt);
-    for (dir = North; dir <= West; dir++) {
+	path[len].x = pt.x;
+	path[len].y = pt.y;
+	len++;
+
+    for (dir = North; dir <= West; dir++){
         if (!WallExists(pt, dir)) {
-            if (SolveMaze(AdjacentPoint(pt, dir))) {
+            if (SolveMaze(AdjacentPoint(pt, dir), path, len)) {
+				path[len].x = AdjacentPoint(pt, dir).x;
+				path[len].y = AdjacentPoint(pt, dir).y;
+				len++;
                 return (TRUE);
             }
         }
     }
-    UnmarkSquare(pt);
+
+	len--;
     return (FALSE);
 }
 
