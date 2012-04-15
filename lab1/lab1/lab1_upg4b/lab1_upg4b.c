@@ -35,6 +35,7 @@ main()
 	//fileName = GetLine();
 
     InitGraphics();
+
 	
 	SetPauseTime(0.001);
     ReadMazeMap(fileName);
