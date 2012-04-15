@@ -31,13 +31,13 @@ main()
 {
 	string fileName;
 	
-	fileName = "unmark.maz";
-	//fileName = GetLine();
+	//fileName = "unmark.maz";
+	fileName = GetLine();
 
     InitGraphics();
 
 	
-	SetPauseTime(0.001);
+	SetPauseTime(0.005);
     ReadMazeMap(fileName);
 	solveMazeCalls = 0;
     if (SolveMaze(GetStartPosition())) {
@@ -46,7 +46,7 @@ main()
         printf("No solution exists.\n");
     }
 
-	SetPauseTime(0.1);
+	SetPauseTime(0.2);
 	ReadMazeMap(fileName);
 	solveMazeCalls = 0;
 	if (SolveMazeNoUnmark(GetStartPosition())) {
