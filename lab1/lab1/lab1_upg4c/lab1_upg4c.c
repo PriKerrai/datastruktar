@@ -41,7 +41,7 @@ main()
 		path[i].x = -1;
 	}
 
-	SetPauseTime(0.01);
+	SetPauseTime(0.1);
 	InitGraphics();
 	ReadMazeMap(MazeFile);
 
@@ -102,12 +102,11 @@ static bool SolveMaze(pointT pt, pointT path[], int len)
 	if (OutsideMaze(pt)){
 		path[len].x = pt.x;
 		path[len].y = pt.y;
-		len++;
+		path[len+1].x = -1;	// Mark end.
 		return (TRUE);
 	}
 
 	if (IsMarked(pt)){
-		//len--;
 		return (FALSE);
 	}
 	else {
@@ -120,14 +119,10 @@ static bool SolveMaze(pointT pt, pointT path[], int len)
     for (dir = North; dir <= West; dir++){
         if (!WallExists(pt, dir)) {
             if (SolveMaze(AdjacentPoint(pt, dir), path, len)) {
-				//path[len].x = AdjacentPoint(pt, dir).x;
-				//path[len].y = AdjacentPoint(pt, dir).y;
-				//len++;
                 return (TRUE);
             }
         }
     }
-	//len--;
     return (FALSE);
 }
 
