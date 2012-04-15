@@ -107,21 +107,22 @@ static bool SolveMaze(pointT pt, pointT path[], int len)
 	}
 
 	if (IsMarked(pt)){
-		len--;
+		//len--;
 		return (FALSE);
 	}
+	else {
+		MarkSquare(pt);
+		path[len].x = pt.x;
+		path[len].y = pt.y;
+		len++;
+	}
 	
-    MarkSquare(pt);
-	path[len].x = pt.x;
-	path[len].y = pt.y;
-	len++;
-
     for (dir = North; dir <= West; dir++){
         if (!WallExists(pt, dir)) {
             if (SolveMaze(AdjacentPoint(pt, dir), path, len)) {
-				path[len].x = AdjacentPoint(pt, dir).x;
-				path[len].y = AdjacentPoint(pt, dir).y;
-				len++;
+				//path[len].x = AdjacentPoint(pt, dir).x;
+				//path[len].y = AdjacentPoint(pt, dir).y;
+				//len++;
                 return (TRUE);
             }
         }
