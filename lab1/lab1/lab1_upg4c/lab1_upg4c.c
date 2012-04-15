@@ -15,7 +15,7 @@
  * MazeFile -- Name of the file containing the maze
  */
 
-#define MazeFile "example.maz"
+#define MazeFile "pathlen.maz"
 #define MaxPath 50
 
 /* Private function prototypes */
@@ -24,7 +24,6 @@ static bool SolveMaze(pointT pt, pointT* path, int len);
 static pointT AdjacentPoint(pointT pt, directionT dir);
 int FindPath(pointT pt, pointT path[], int maxPathSize);
 int pathLen(pointT path[]);
-void reverseSort(pointT* path, int length);
 
 /* Main program */
 // --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
@@ -53,7 +52,6 @@ main()
 		printf("No solution exists.\n");
 	} 
 	else {
-		//reverseSort(path, pathLen(path));
 		printf("The following path is a solution:\n");
 		for (i = 0; i < len; i++) {
 			printf(" (%d, %d)\n", path[i].x, path[i].y);
@@ -74,24 +72,17 @@ int pathLen(pointT path[]){
 	return len;
 }
 
-void reverseSort(pointT path[], int length) {
-	int i;
-	pointT tmp;
-
-	for (i = 0; i < length; i++) {
-	  tmp = path[i];
-	  path[i] = path[length-(i+1)];
-	  path[length-(i+1)] = tmp;
-	  printf("length-(i+1)=%i\n", length-(i+1));
-	}
-}
-
 int FindPath(pointT pt, pointT path[], int maxPathSize){
 	
 	int len = 0;
 
-	SolveMaze(pt, path, len);
-	return pathLen(path);
+	if ( (SolveMaze(pt, path, len)) && (pathLen(path) < maxPathSize) ){
+		printf("pathLen(path)=%i, maxPathSize=%i\n", pathLen(path), maxPathSize);
+		return pathLen(path);
+	}
+	else
+		printf("pathLen(path)=%i, maxPathSize=%i\n", pathLen(path), maxPathSize);
+		return 0;
 }
 
 /*
