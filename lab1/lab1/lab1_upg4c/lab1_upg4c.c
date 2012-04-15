@@ -6,6 +6,7 @@
 
 #include <stdio.h>
 #include "genlib.h"
+#include "graphics.h"
 #include "mazelib.h"
 
 /*
@@ -19,12 +20,14 @@
 /* Private function prototypes */
 
 static bool SolveMaze(pointT pt);
+static pointT AdjacentPoint(pointT pt, directionT dir);
 
 /* Main program */
 
-main(){
+main()
+{
+    InitGraphics();
     ReadMazeMap(MazeFile);
-		SetPauseTime(0.3);
     if (SolveMaze(GetStartPosition())) {
         printf("The marked squares show a solution path.\n");
     } else {
@@ -43,8 +46,10 @@ main(){
  * current square and moving one step along each open passage.
  */
 
-static bool SolveMaze(pointT pt){
+static bool SolveMaze(pointT pt)
+{
     directionT dir;
+
     if (OutsideMaze(pt)) return (TRUE);
     if (IsMarked(pt)) return (FALSE);
     MarkSquare(pt);
@@ -59,3 +64,26 @@ static bool SolveMaze(pointT pt){
     return (FALSE);
 }
 
+/*
+ * Function: AdjacentPoint
+ * Usage: newpt = AdjacentPoint(pt, dir);
+ * --------------------------------------
+ * This function returns the pointT that results from moving
+ * one square from pt in the direction specified by dir.  For
+ * example, if pt is the point (1,1), AdjacentPoint(pt, East)
+ * would return the point (2,1).
+ */
+
+static pointT AdjacentPoint(pointT pt, directionT dir)
+{
+    pointT newpt;
+
+    newpt = pt;
+    switch (dir) {
+      case North: newpt.y++; break;
+      case East:  newpt.x++; break;
+      case South: newpt.y--; break;
+      case West:  newpt.x--; break;;
+    }
+    return (newpt);
+}
