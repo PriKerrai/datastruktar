@@ -41,7 +41,7 @@ main()
     ReadMazeMap(fileName);
 	solveMazeCalls = 0;
     if (SolveMaze(GetStartPosition())) {
-        printf("Number of recursive calls: %i\n", solveMazeCalls);
+        printf("Number of calls to solveMaze: %i\n", solveMazeCalls);
     } else {
         printf("No solution exists.\n");
     }
@@ -50,7 +50,7 @@ main()
 	ReadMazeMap(fileName);
 	solveMazeCalls = 0;
 	if (SolveMazeNoUnmark(GetStartPosition())) {
-        printf("Number of recursive calls: %i\n", solveMazeCalls);
+        printf("Number of calls to solveMazeNoUnmark: %i\n", solveMazeCalls);
     } else {
         printf("No solution exists.\n");
     }
