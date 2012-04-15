@@ -23,7 +23,7 @@ static bool SolveMaze(pointT pt);
 static pointT AdjacentPoint(pointT pt, directionT dir);
 static bool SolveMazeNoUnmark(pointT pt);
 
-static int recursiveCalls;
+static int solveMazeCalls;
 
 /* Main program */
 
@@ -31,29 +31,29 @@ main()
 {
 	string fileName;
 	
-	fileName = "pathlen.maz";
+	fileName = "unmark.maz";
 	//fileName = GetLine();
-	SetPauseTime(0.001);
+	SetPauseTime(0);
 
     InitGraphics();
 
     ReadMazeMap(fileName);
-	recursiveCalls = 0;
+	solveMazeCalls = 0;
     if (SolveMaze(GetStartPosition())) {
         printf("The marked squares show a solution path.\n");
     } else {
         printf("No solution exists.\n");
     }
-	printf("Number of recursive calls: %i\n", recursiveCalls);
+	printf("Number of recursive calls: %i\n", solveMazeCalls);
 
 	ReadMazeMap(fileName);
-	recursiveCalls = 0;
+	solveMazeCalls = 0;
 	if (SolveMazeNoUnmark(GetStartPosition())) {
         printf("The marked squares show a solution path.\n");
     } else {
         printf("No solution exists.\n");
     }
-	printf("Number of recursive calls: %i\n", recursiveCalls);
+	printf("Number of recursive calls: %i\n", solveMazeCalls);
 }
 
 /*
@@ -71,7 +71,7 @@ static bool SolveMaze(pointT pt)
 {
     directionT dir;
 
-	recursiveCalls++;
+	solveMazeCalls++;
 
     if (OutsideMaze(pt)) return (TRUE);
     if (IsMarked(pt)) return (FALSE);
@@ -92,7 +92,7 @@ static bool SolveMazeNoUnmark(pointT pt)
 {
     directionT dir;
 
-	recursiveCalls++;
+	solveMazeCalls++;
 
     if (OutsideMaze(pt)) return (TRUE);
     if (IsMarked(pt)) return (FALSE);
