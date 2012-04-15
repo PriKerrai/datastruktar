@@ -8,16 +8,13 @@
 #include "genlib.h"
 #include "graphics.h"
 #include "mazelib.h"
-/*
- * Constants
- * ---------
- * MazeFile -- Name of the file containing the maze
- */
 
-#define MazeFile "pathlen.maz"
+/* Constants */
+
 #define NoSolution 10000
 
-// 
+/* typedef */
+
 typedef struct {
 	int steps;
 	int pathLength;
@@ -30,23 +27,20 @@ static splT SolveMaze(pointT pt, splT spl);
 static pointT AdjacentPoint(pointT pt, directionT dir);
 int shortestPathLength(pointT pt);
 
-
-
 /* Main program */
 
 main()
 {
 	int spLen;
-	string fileName;
+	string mazeFile;
 
-	fileName = GetLine();
+	mazeFile = GetLine();
 	SetPauseTime(0.001);
 
     InitGraphics();
 
-    ReadMazeMap(fileName);
+    ReadMazeMap(mazeFile);
 
-	//printf("shortestPathLength = %i\n", shortestPathLength(GetStartPosition()));
 	spLen = shortestPathLength(GetStartPosition());
 	if (spLen < NoSolution) printf("The shortest path is: %d\n", spLen);
 	else printf("No solution was found.\n");
