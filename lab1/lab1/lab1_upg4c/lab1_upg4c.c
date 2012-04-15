@@ -15,7 +15,6 @@
  * MazeFile -- Name of the file containing the maze
  */
 
-#define MazeFile "pathlen.maz"
 #define MaxPath 50
 
 /* Private function prototypes */
@@ -31,9 +30,9 @@ main()
 {
 	pointT path[MaxPath];
 	int i, len;
-	string mazeFile;
+	string MazeFile;
 
-	mazeFile = "pathlen.maz";
+	MazeFile = "unmark.maz";
 	//MazeFile = GetLine();
 
 
@@ -42,7 +41,7 @@ main()
 		path[i].x = -1;
 	}
 
-	SetPauseTime(0.1);
+	SetPauseTime(0.01);
 	InitGraphics();
 	ReadMazeMap(MazeFile);
 
@@ -76,7 +75,7 @@ int FindPath(pointT pt, pointT path[], int maxPathSize){
 	
 	int len = 0;
 
-	if ( (SolveMaze(pt, path, len)) && (pathLen(path) < maxPathSize) ){
+	if ( (SolveMaze(pt, path, len)) && (pathLen(path) <= maxPathSize) ){
 		printf("pathLen(path)=%i, maxPathSize=%i\n", pathLen(path), maxPathSize);
 		return pathLen(path);
 	}
@@ -99,7 +98,7 @@ int FindPath(pointT pt, pointT path[], int maxPathSize){
 static bool SolveMaze(pointT pt, pointT path[], int len)
 {
 	directionT dir;
-
+	
 	if (OutsideMaze(pt)){
 		path[len].x = pt.x;
 		path[len].y = pt.y;
@@ -111,7 +110,7 @@ static bool SolveMaze(pointT pt, pointT path[], int len)
 		len--;
 		return (FALSE);
 	}
-
+	
     MarkSquare(pt);
 	path[len].x = pt.x;
 	path[len].y = pt.y;
@@ -127,8 +126,7 @@ static bool SolveMaze(pointT pt, pointT path[], int len)
             }
         }
     }
-
-	len--;
+	//len--;
     return (FALSE);
 }
 
