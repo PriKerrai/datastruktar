@@ -1,8 +1,8 @@
-/*
- * File: maze.c
- * ------------
- * This program solves a maze by recursive backtracking.
- */
+/* Authors:  
+Karl Sjöstrand (studentID: s117902)
+Martin Nilsson (studentID: s118736)
+Josef Holmer   (studentID: s117993)
+*/
 
 #include <stdio.h>
 #include "genlib.h"

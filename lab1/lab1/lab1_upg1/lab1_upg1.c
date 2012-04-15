@@ -1,3 +1,9 @@
+/* Authors:  
+Karl Sjöstrand (studentID: s117902)
+Martin Nilsson (studentID: s118736)
+Josef Holmer   (studentID: s117993)
+*/
+
 #include <stdio.h>
 #include "simpio.h"
 #include "math.h"
@@ -11,6 +17,7 @@ bool isMeasurable(int target, int weights[], int nWeights);
 // ---- start of main ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- //
 int main(void){
 
+	printf("Print the graycode for n bits.\n\n");
 	printGrayCode(getN());
 
 	printf("\nPress enter to exit...");

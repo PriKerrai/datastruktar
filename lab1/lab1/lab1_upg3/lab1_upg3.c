@@ -1,3 +1,9 @@
+/* Authors:  
+Karl Sjöstrand (studentID: s117902)
+Martin Nilsson (studentID: s118736)
+Josef Holmer   (studentID: s117993)
+*/
+
 #include <stdio.h>
 #include <math.h>
 #include "genlib.h"
@@ -43,7 +49,7 @@ void drawV(int depth, double angle, double len){
 		sY = GetCurrentY();
 
 		// Delay before each line is drawn to see the recursion. 
-		Sleep(10);
+		Sleep(3);
 
 		// Draw line with reduced angle.
 		drawPolarLine(len, angle-angleV);
@@ -51,7 +57,7 @@ void drawV(int depth, double angle, double len){
 		drawV(depth-1, angle-angleV, len);
 
 		// Delay before each line is drawn to see the recursion. 
-		Sleep(10);
+		Sleep(3);
 		
 		// Draw line with increased angle.
 		MovePen(sX, sY);

@@ -1,3 +1,9 @@
+/* Authors:  
+Karl Sjöstrand (studentID: s117902)
+Martin Nilsson (studentID: s118736)
+Josef Holmer   (studentID: s117993)
+*/
+
 #include <stdio.h>
 #include "simpio.h"
 #include "math.h"
