@@ -35,7 +35,7 @@ void printGrayCode(int nBits){
 
 	graycode = NewArray(pow((double)2, nBits), char*);
 
-	// Put some stuff into graycode.
+	// Put some stuff into graycode vector.
 	buildGraycCode(nBits, graycode);
 
 	// Print graycode.

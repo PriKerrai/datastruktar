@@ -7,8 +7,8 @@ bool isMeasurable(int target, int weights[], int nWeights);
 
 // ---- start of main ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- //
 int main(void){
-	static int weights[10];
-	static int nWeights = 0;
+	int weights[10];
+	int nWeights = 0;
 	int i, totalWeight = 0;
 
 	printf("How many weights should be used?\n");

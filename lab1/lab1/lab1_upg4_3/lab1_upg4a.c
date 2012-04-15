@@ -29,7 +29,7 @@ int shortestPathLength(pointT pt);
 
 /* Main program */
 
-main()
+int main(void)
 {
 	int spLen;
 	string mazeFile;

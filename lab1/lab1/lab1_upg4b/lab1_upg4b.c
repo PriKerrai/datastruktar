@@ -19,7 +19,7 @@ static int solveMazeCalls;
 
 /* Main program */
 
-main()
+int main(void)
 {
 	string mazeFile;
 	

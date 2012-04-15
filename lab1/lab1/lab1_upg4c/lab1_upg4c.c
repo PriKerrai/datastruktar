@@ -22,7 +22,7 @@ int pathLen(pointT path[]);
 
 /* Main program */
 // --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
-main()
+int main(void)
 {
 	pointT path[MaxPath];
 	int i, len;
