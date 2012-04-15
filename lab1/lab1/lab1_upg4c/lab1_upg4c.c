@@ -9,11 +9,7 @@
 #include "graphics.h"
 #include "mazelib.h"
 
-/*
- * Constants
- * ---------
- * MazeFile -- Name of the file containing the maze
- */
+/* Constants */
 
 #define MaxPath 50
 
@@ -30,10 +26,10 @@ main()
 {
 	pointT path[MaxPath];
 	int i, len;
-	string MazeFile;
+	string mazeFile;
 
-	MazeFile = "unmark.maz";
-	//MazeFile = GetLine();
+	mazeFile = "unmark.maz";
+	//mazeFile = GetLine();
 
 
 	// Initialize the vector with -1 as the x-cordinate, to surely measure length of the saved path using function pathLen.
@@ -43,7 +39,7 @@ main()
 
 	SetPauseTime(0.1);
 	InitGraphics();
-	ReadMazeMap(MazeFile);
+	ReadMazeMap(mazeFile);
 
 	len = FindPath(GetStartPosition(), path, MaxPath);
 

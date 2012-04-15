@@ -9,14 +9,6 @@
 #include "graphics.h"
 #include "mazelib.h"
 
-/*
- * Constants
- * ---------
- * MazeFile -- Name of the file containing the maze
- */
-
-#define MazeFile "unmark.maz"
-
 /* Private function prototypes */
 
 static bool SolveMaze(pointT pt);
@@ -29,28 +21,28 @@ static int solveMazeCalls;
 
 main()
 {
-	string fileName;
+	string mazeFile;
 	
-	//fileName = "unmark.maz";
-	fileName = GetLine();
+	//mazeFile = "unmark.maz";
+	mazeFile = GetLine();
 
     InitGraphics();
 
 	
-	SetPauseTime(0.005);
-    ReadMazeMap(fileName);
+	SetPauseTime(0.001);
+    ReadMazeMap(mazeFile);
 	solveMazeCalls = 0;
     if (SolveMaze(GetStartPosition())) {
-        printf("Number of calls to solveMaze: %i\n", solveMazeCalls);
+        printf("Number of calls to function when unmarking: %i\n", solveMazeCalls);
     } else {
         printf("No solution exists.\n");
     }
 
-	SetPauseTime(0.2);
-	ReadMazeMap(fileName);
+	SetPauseTime(0.1);
+	ReadMazeMap(mazeFile);
 	solveMazeCalls = 0;
 	if (SolveMazeNoUnmark(GetStartPosition())) {
-        printf("Number of calls to solveMazeNoUnmark: %i\n", solveMazeCalls);
+        printf("Number of calls to function when there is no unmarking: %i\n", solveMazeCalls);
     } else {
         printf("No solution exists.\n");
     }
