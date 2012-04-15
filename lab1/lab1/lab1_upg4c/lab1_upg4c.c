@@ -48,7 +48,7 @@ main()
 	len = FindPath(GetStartPosition(), path, MaxPath);
 
 	if (len == 0) {
-		printf("No solution exists.\n");
+		printf("No solution exists. (Or max length of path exceeded.)\n");
 	} 
 	else {
 		printf("The following path is a solution:\n");
@@ -76,11 +76,9 @@ int FindPath(pointT pt, pointT path[], int maxPathSize){
 	int len = 0;
 
 	if ( (SolveMaze(pt, path, len)) && (pathLen(path) <= maxPathSize) ){
-		printf("pathLen(path)=%i, maxPathSize=%i\n", pathLen(path), maxPathSize);
 		return pathLen(path);
 	}
 	else
-		printf("pathLen(path)=%i, maxPathSize=%i\n", pathLen(path), maxPathSize);
 		return 0;
 }
 
