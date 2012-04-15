@@ -4,7 +4,7 @@
 #include "graphics.h"
 #include "simpio.h"
 #include "random.h"
-#include "windows.h"	// For adding delay before drawing each line to easier follow the recursion (Sleep(50)).
+#include "windows.h"
 
 #define Pi 3.1415926535
 
@@ -13,7 +13,6 @@ void drawPolarLine(double r, double theta);
 
 int main(void){
 
-	int initLength = 1;
 	InitGraphics();
 
 	// Draw "trunk".
@@ -26,8 +25,6 @@ int main(void){
 	return 0;
 }
 
-// Kanske måste ha basfall på längden istället för djupet? Lätt ordnat, men tycker det blir lite tråkigare.
-//"If the probability of branching is a function of the length of the current branch, the process will eventually terminate as the branches get progressively shorter."
 void drawV(int depth, double angle, double len){
 
 	double sX, sY, angleV;
@@ -64,8 +61,7 @@ void drawV(int depth, double angle, double len){
 	}
 }
 
-// Borrowed from the book Programming Abstractions in C - Eric S. Roberts.
-// What it does: Draws a line to a given length on a given angle from the current position.
+// Draws a line of a given length, in a given angle.
 void drawPolarLine(double r, double theta){
 
 	double radians;
