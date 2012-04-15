@@ -36,25 +36,23 @@ main()
 
     InitGraphics();
 	
-	SetPauseTime(0);
+	SetPauseTime(0.001);
     ReadMazeMap(fileName);
 	solveMazeCalls = 0;
     if (SolveMaze(GetStartPosition())) {
-        printf("The marked squares show a solution path.\n");
+        printf("Number of recursive calls: %i\n", solveMazeCalls);
     } else {
         printf("No solution exists.\n");
     }
-	printf("Number of recursive calls: %i\n", solveMazeCalls);
 
-	SetPauseTime(0.01);
+	SetPauseTime(0.1);
 	ReadMazeMap(fileName);
 	solveMazeCalls = 0;
 	if (SolveMazeNoUnmark(GetStartPosition())) {
-        printf("The marked squares show a solution path.\n");
+        printf("Number of recursive calls: %i\n", solveMazeCalls);
     } else {
         printf("No solution exists.\n");
     }
-	printf("Number of recursive calls: %i\n", solveMazeCalls);
 }
 
 /*
